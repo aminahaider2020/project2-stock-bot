@@ -22,10 +22,10 @@ The first stage of the project will test these relationships historically rather
 
 Hypothesis: US large-cap stocks that fall by at least 8% in one trading day exhibit a measurable tendency to subsequently recover.
 
-Event: Daily close-to-close return ≤ −8%
-Universe: Large-cap US equities
-Initial historical period: 10 years
-Outcome: Whether the stock rises at least 5% from the post-drop closing price within the following 10 trading days
-Secondary variables: General market direction and company profitability
+- Event: Daily close-to-close return ≤ −8%
+- Universe: Large-cap US equities
+- Initial historical period: 10 years
+- Outcome: Whether the stock rises at least 5% from the post-drop closing price within the following 10 trading days
+- Secondary variables: General market direction and company profitability
 
 Primary metric: Percentage of qualifying events that achieve the 5% recovery threshold within 10 trading days.
