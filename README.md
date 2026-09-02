@@ -29,3 +29,19 @@ Hypothesis: US large-cap stocks that fall by at least 8% in one trading day exhi
 - Secondary variables: General market direction and company profitability
 
 Primary metric: Percentage of qualifying events that achieve the 5% recovery threshold within 10 trading days.
+
+**Results**: A majority of qualifying events reached the recovery threshold (58.3%), but the result cannot yet be interpreted as evidence of a trading edge. The sample is small (10 companies), event frequency varies substantially by stock (range 1-19), and no baseline comparison or trading-cost analysis has yet been performed.
+
+## Experiment 002 - Comparing Against the Baseline
+
+Hypothesis: US large-cap stocks are more likely to gain 5% within 10 trading days after an ≥8% one-day drop than they are after an ordinary trading day. 
+
+- Event: TBD
+- Universe: Large-cap US equities
+- Initial historical period: 10 years
+- Outcome: TBD
+- Secondary variables: General market direction and company profitability
+
+Primary metric: TBD.
+
+The aim of experiment 002 is to find out whether a recovery threshold of 58.3% of an ≥8% one-day drop is substantially better odds than a regular close. Essentially, experiment 2 creates the baseline characterization against which all experiments will be compared to.    
