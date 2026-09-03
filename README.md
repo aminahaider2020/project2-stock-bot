@@ -24,24 +24,27 @@ Hypothesis: US large-cap stocks that fall by at least 8% in one trading day exhi
 
 - Event: Daily close-to-close return ≤ −8%
 - Universe: Large-cap US equities
-- Initial historical period: 10 years
+- Initial historical period: 01-Jan-2016–01-Jan-2026
 - Outcome: Whether the stock rises at least 5% from the post-drop closing price within the following 10 trading days
 - Secondary variables: General market direction and company profitability
 
 Primary metric: Percentage of qualifying events that achieve the 5% recovery threshold within 10 trading days.
 
-**Results**: A majority of qualifying events reached the recovery threshold (58.3%), but the result cannot yet be interpreted as evidence of a trading edge. The sample is small (10 companies), event frequency varies substantially by stock (range 1-19), and no baseline comparison or trading-cost analysis has yet been performed.
+**Results**: A majority of qualifying events reached the recovery threshold (58.3%), but the result cannot yet be interpreted as evidence of a trading edge. The sample is small (10 companies), event frequency varies substantially by stock (range 1-19), and no baseline comparison or trading-cost analysis has yet been performed. 
 
-## Experiment 002 - Comparing Against the Baseline
+## Experiment 002 — Comparing Against the Baseline
 
-Hypothesis: US large-cap stocks are more likely to gain 5% within 10 trading days after an ≥8% one-day drop than they are after an ordinary trading day. 
+Hypothesis: US large-cap stocks are more likely to gain 5% within 10 trading days after an ≥8% one-day drop than they are after an ordinary trading day.
 
-- Event: TBD
-- Universe: Large-cap US equities
-- Initial historical period: 10 years
-- Outcome: TBD
-- Secondary variables: General market direction and company profitability
+- Event: Daily close-to-close return ≤ −8%
+- Control: Ordinary trading days with returns > −8%
+- Universe: Same 10 large-cap US equities used in Experiment 001
+- Historical period: 01-Jan-2016–01-Jan-2026
+- Outcome: Whether the stock gains at least 5% from the starting close within the following 10 trading days
+- Control design: 1,000 randomly sampled control groups, matched to the event sample by ticker
 
-Primary metric: TBD.
+Primary metric: Difference between the event recovery hit rate and the average matched-control hit rate.
 
-The aim of experiment 002 is to find out whether a recovery threshold of 58.3% of an ≥8% one-day drop is substantially better odds than a regular close. Essentially, experiment 2 creates the baseline characterization against which all experiments will be compared to.    
+**Results**: Large-drop events produced a 58.3% recovery hit rate, compared with a mean control hit rate of 35.8%, an uplift of 22.5 percentage points. The median control hit rate was 35.0%, and 95% of simulated control samples fell between 25.0% and 48.3%. None of the 1,000 control simulations matched or exceeded the observed 58.3% event hit rate.
+
+These results provide preliminary evidence that large single-day declines are associated with a higher probability of a subsequent 5% recovery than ordinary trading days in this sample. The next experiment will examine the full distribution of forward returns and downside outcomes rather than relying only on a binary recovery threshold.
