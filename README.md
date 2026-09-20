@@ -101,7 +101,7 @@ To establish a baseline, the 60 extreme-drop observations were compared against 
 
 Large-drop events therefore recovered substantially more often than the matched ordinary-day samples in this historical dataset.
 
-![Extreme drops compared with ordinary trading days](data%20visualisations/01_extreme_drop_recovery.jpg)
+![Extreme drops compared with ordinary trading days](data%20visualisations/01_extreme_drops_vs_ordinary_days.jpg)
 
 ---
 
