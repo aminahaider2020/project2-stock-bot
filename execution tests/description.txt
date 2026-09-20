@@ -1,0 +1,1 @@
+This folder contains visuals that successfully show testing of executing buy and sell commands through python script with the Alpaca paper trading environment. 
