@@ -211,7 +211,7 @@ Mean net return remained positive in every leave-one-stock-out test, ranging fro
 
 Removing NVDA produced the largest deterioration, but the remaining strategy still generated a positive historical mean return.
 
-![Leave-one-stock-out robustness test](data%20visualisations/03_strategy_robustness_check.jpg)
+![Leave-one-stock-out robustness test](data%20visualisations/04_strategy_robustness_check.jpg)
 
 ### Transaction Costs
 
@@ -227,7 +227,7 @@ The main backtest assumes **0.10% round-trip trading friction**. The strategy wa
 
 The historical mean remained positive under every transaction-cost assumption tested, including a 1.00% round-trip cost — ten times the V1 assumption.
 
-![Transaction-cost sensitivity](data%20visualisations/03_transaction_cost_sensitivity.jpg)
+![Transaction-cost sensitivity](data%20visualisations/05_transaction_cost_sensitivity.jpg)
 
 ### Decision
 
@@ -260,7 +260,7 @@ V1 is designed to test two things:
 ## V1 Workflow
 
 ```text
-Alpaca Market Data
+Market Data
         │
         ▼
 Download Daily Bars
@@ -304,52 +304,6 @@ Daily Session Summary
 
 ---
 
-## What V1 Now Does
-
-- retrieves current market data
-- calculates completed close-to-close daily returns
-- identifies ≥8% decline signals
-- prevents duplicate entries within the running session
-- calculates position sizes from paper-account equity
-- submits market buy orders through Alpaca's paper environment
-- retrieves broker order status and fill information
-- identifies V1-owned open positions
-- submits same-session exit orders
-- confirms completed exits
-- calculates realised trade return and P&L
-- persists completed trades to a CSV trade log
-- produces a daily execution summary
-
----
-
-## Paper-Trading Validation
-
-The execution pipeline was tested end-to-end in Alpaca's paper environment.
-
-Test paper orders successfully progressed through:
-
-**BUY submitted → BUY filled → position recognised → SELL submitted → SELL filled**
-
-The broker activity and account history confirmed completed round trips, demonstrating that the V1 code can communicate with the brokerage environment and execute the intended order lifecycle.
-
-> These validation trades test the **execution infrastructure**, not the historical strategy result. They should not be interpreted as out-of-sample evidence of profitability.
-
-# V1 Architecture and Design Decisions
-
-V1 was intentionally kept small enough that the complete research-to-execution pipeline remained understandable.
-
-Several choices were deliberately frozen after the historical research:
-
-- ≥8% decline threshold
-- one-session holding period
-- 5% maximum account allocation per signal
-- same 10-stock universe
-- no additional fundamental or technical filters
-- no further historical optimisation
-
-This reduces the temptation to continually tune the strategy against data it has already seen.
-
----
 
 # V1 Limitations
 
@@ -366,8 +320,6 @@ Current limitations include:
 - **IEX market-data feed.** V1 uses Alpaca's available IEX data feed rather than consolidated SIP data.
 - **No live validation yet.** Successful paper-order execution demonstrates that the infrastructure works; it does not establish that the historical return pattern will persist out of sample.
 
-These limitations are intentionally documented rather than hidden: the purpose of V1 is to establish a functioning experimental system from which genuine forward evidence can begin to accumulate.
-
 ---
 
 # Technology
@@ -379,36 +331,6 @@ These limitations are intentionally documented rather than hidden: the purpose o
 **Jupyter Notebook** — research and V1 implementation
 
 ---
-
-# What V1 Establishes
-
-Stock Bot V1 completes the first full research-to-execution cycle:
-
-**Question → historical event study → statistical baseline → return analysis → executable backtest → robustness testing → frozen strategy → brokerage integration → paper execution**
-
-The most important output of V1 is therefore not simply the historical +1.24% average return.
-
-It is a functioning framework in which a hypothesis was progressively challenged, narrowed into an executable rule, stress-tested and then implemented in a paper brokerage environment without continuing to optimise against the historical sample.
-
----
-
-# Next Steps — V2
-
-V2 will focus primarily on **infrastructure and genuine forward testing**, rather than immediately searching for better historical parameters.
-
-Potential improvements include:
-
-- scheduled signal scanning and execution
-- persistent strategy state across sessions
-- robust order-status polling and reconciliation
-- unique strategy/order identifiers
-- automated execution and trade logging
-- improved monitoring and error handling
-- notifications and reporting
-- longer-running out-of-sample paper-trading evaluation
-- comparison between historical assumptions and observed paper fills
-
-Only after sufficient forward evidence has accumulated should additional strategy changes or live-capital deployment be considered.
 
 ---
 
